@@ -1,71 +1,134 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+*{
+  overflow-x: none;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+html, body{
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+}
+html{
+  background-color: rgb(39, 38, 48);
+       height: 100%;
+    min-height: 100vh;
+    overflow-y: scroll;
+ 
+ background-attachment: fixed;
+} 
+
+body{ 
+     height: 100%; 
+     display: flex;
+     overflow-x: none;
+
+     flex-direction: column;
+   }
+
+   main{
+    overflow-x: none;
+
+   }
+
+div{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+} 
+body::-webkit-scrollbar{
+  display: none;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+@media screen and (display-mode: standalone) {
+  
+  header{
+    height: 88px;
+  } 
+}
+ 
+ 
+@keyframes animate-tap {
+  from {
+    max-width:  0px;
+    max-height: 0px;
+   }
+  to {
+    max-width: auto;
+    max-height: auto;
+  }
+}
+button.tap:active{
+  background-color: aqua;
+  animation: animate-tap 1s ease-in-out infinite;
+}
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
-  a:hover {
-    color: #747bff;
+}
+
+ 
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
-  button {
-    background-color: #f9f9f9;
+}
+  
+input::-webkit-input-placeholder { /* Chrome, Safari, Edge */
+  color: #ccc;
+}
+
+input::-moz-placeholder { /* Firefox */
+  color: #ccc;
+}
+input{
+  color: #ccc;
+}
+input:focus-visible{
+  outline: none;
+ }
+ 
+ .shake{
+   animation: tilt-shaking  0.5s ease-in-out;
+ }
+ 
+ @keyframes tilt-shaking {
+  0% { transform: rotate(0deg); scale: 1.4; color:maroon; }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg);   ;
+}
+} 
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+} .infiniteScrollWrapper {
+  overflow-x: hidden;
+  width: fit-content;
+}
+
+.infiniteScroll {
+  animation: infiniteTranslate 10s linear infinite;
+  white-space: nowrap; /* Ensure content doesn't wrap */
+}
+
+@keyframes infiniteTranslate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }

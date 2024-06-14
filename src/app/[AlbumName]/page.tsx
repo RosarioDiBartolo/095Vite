@@ -15,8 +15,7 @@ export default function AlbumCover() {
    return (
     
     <div className="    landscape:px-14 landscape:py-10  z-0  landscape:h-svh flex-1 flex items-end p-6  gap-6 "
-       
-    > 
+     > 
       <div className=" flex-1 max-h-full aspect-square relative ">
       <img
           //priority

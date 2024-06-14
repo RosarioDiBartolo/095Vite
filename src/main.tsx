@@ -1,20 +1,12 @@
+import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { ErrorBoundary } from 'react-error-boundary'
-import UI from './UI.tsx'
-
- 
-
-  
+import Wrapper from './app/[AlbumName]/layout'
+import Page from './app/[AlbumName]/page'
+import "./index.css"
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <ErrorBoundary
-    FallbackComponent={ () => <UI />}
-    onReset={() => {
-      // Reset the state of your application here if needed
-      window.location.reload();
-    }}
-  >
-    <App />
-  </ErrorBoundary>
+  <React.StrictMode>
+    <Wrapper params={{ AlbumName:"SMOK_LAYBACK_VOL" }}>
+      <Page />
+    </Wrapper>
+  </React.StrictMode>,
 )
