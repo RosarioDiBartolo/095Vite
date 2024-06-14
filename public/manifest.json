@@ -1,0 +1,14 @@
+{
+  "short_name": "095",
+  "name": "095",
+  "icons": [
+    {
+      "src": "icon app.jpg",
+      "sizes": "500x500",
+      "type": "image/jpg"
+    } 
+  ],
+  "start_url": "/SMOK_LAYBACK_VOL",
+  "display": "standalone", 
+  "orientation": "portrait"
+}
