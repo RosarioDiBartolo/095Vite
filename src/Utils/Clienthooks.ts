@@ -1,13 +1,14 @@
 "use client";
-import { DependencyList, useEffect } from "react";
+import { DependencyList, useEffect  } from "react";
 
-
-
+interface EventListener  {
+  type: string;
+  callback: EventListenerOrEventListenerObject;
+  node?: Element;
+}
+ 
 export const useListener = (
-  type: string,
-  callback: EventListenerOrEventListenerObject,
-  node?: Element,
-  deps?: DependencyList 
+  {type, callback , node  , deps }: EventListener &  {deps?: DependencyList }
 ) => {
     const Node = node || (typeof window !== 'undefined' ? window : undefined);
 

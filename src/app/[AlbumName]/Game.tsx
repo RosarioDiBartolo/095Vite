@@ -5,7 +5,7 @@ import { useApp } from '../AppProvider';
 import classNames from 'classnames';
 import lottie, { AnimationItem } from 'lottie-web';
  import PhoneRotation from "../../assets/Phone rotation.json"
-const Game: React.FC = () => {
+ const Game: React.FC = () => {
   const [gameOpened] = useApp().game;
    const [Active, setActive] = useState(false)
 
@@ -28,12 +28,13 @@ const Game: React.FC = () => {
     }
    }, [PhoneRotation, gameOpened]);
 
-
-
+ 
   return (
     gameOpened &&
+   
     <div         onDoubleClickCapture={()=> setActive(!Active)}
-    className={ classNames( 'landscape:h-[90svh] flex flex-col relative'  )}> 
+        className={ classNames( 'landscape:h-[90svh]  flex flex-col relative'  )}> 
+       
        <iframe
          title='Game'
         className={classNames(
@@ -42,8 +43,8 @@ const Game: React.FC = () => {
         )}
         src="/javascript-racer-master/v4.final.html"
       />
-      <div className=' z-0 p-4 bg-gradient-to-t from-green-700   font-extrabold h-80 flex items-center justify-center flex-col text-center landscape:hidden'>
-         
+
+      <div className='  z-0 p-4 bg-gradient-to-t from-green-700   font-extrabold h-80 flex items-center justify-center flex-col text-center landscape:hidden'>
         <div ref={ animationContainer} />
       </div>
     </div>

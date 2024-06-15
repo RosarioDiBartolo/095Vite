@@ -23,7 +23,7 @@ export function MusicTrack() {
 
   return (
     <div className="portrait:pb-10 flex-1">
-        <div className="flex justify-between text-sm mt-2 text-gray-500">
+      <div className="flex justify-between text-sm mt-2 text-gray-500">
         <span>{currentTime ? formatTime(currentTime) : '0:00'}</span>
         <span>{duration ? formatTime(duration) : '0:00'}</span>
       </div>
@@ -31,6 +31,7 @@ export function MusicTrack() {
         type="range"
         className="w-full h-1 appearance-none accent-green-700 border-none  rounded-lg   cursor-pointer range-sm dark:bg-zinc-900  "        min="0"
         max={duration || 0}
+        step={.0001}
         value={currentTime || 0}
         onChange={handleSeek}
       />
@@ -70,7 +71,7 @@ const Player = () => {
   }, [album?.Songs.length, setCurrentSong])
  
   return (
-    <div className=' flex justify-between'> 
+    <div className=' flex justify-between overflow-visible'> 
     <div className=" w-1/2 flex gap-3 items-center justify-between  text-green-500    ">
           <Toggler />
           

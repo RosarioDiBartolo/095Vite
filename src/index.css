@@ -1,37 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-*{
-  overflow-x: none;
-
-}
+ 
 html, body{
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+
 }
 html{
-  background-color: rgb(39, 38, 48);
-       height: 100%;
+    background-color: rgb(39, 38, 48);
+    height: 100%;
     min-height: 100vh;
     overflow-y: scroll;
- 
- background-attachment: fixed;
+  
+    background-attachment: fixed;
 } 
 
 body{ 
      height: 100%; 
      display: flex;
-     overflow-x: none;
-
+ 
      flex-direction: column;
    }
 
-   main{
-    overflow-x: none;
+.animate-once{
+  animation-iteration-count: initial;
 
-   }
-
+}
 div{
   -webkit-appearance: none;
   -moz-appearance: none;

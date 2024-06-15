@@ -5,3 +5,8 @@ export const formatTime = (seconds: number) => {
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   };
   
+
+export function getOrientation(){
+  const orientation = window.innerWidth > window.innerHeight ? "Landscape" : "Portrait";
+  return orientation;
+}

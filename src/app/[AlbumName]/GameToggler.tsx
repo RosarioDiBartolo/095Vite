@@ -16,6 +16,9 @@ import { useApp } from '../AppProvider';
      if ( playing ){
       //router.replace(`/${album.Url}/Game`)
       setGameOpened( true )
+      window.scroll({
+        top: 0, behavior: "smooth"
+      })
     }}
    return (
          
