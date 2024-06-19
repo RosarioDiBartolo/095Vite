@@ -13,10 +13,10 @@ export default function AlbumCover() {
   const { playing } = useGlobalAudioPlayer();
  
    return (
-    
-    <div className="     landscape:px-14 landscape:py-10  z-0  landscape:h-svh flex-1 flex items-end p-6  gap-6 "
+        
+    <div className="  landscape:px-14 landscape:py-10   z-0  landscape:h-svh flex-1 flex items-end p-6  gap-6 "
      > 
-      <div className=" flex-1 max-h-full aspect-square relative ">
+      <div className=" flex-1 max-h-full aspect-square    ">
       <img
           //priority
             src={Logo}
@@ -25,13 +25,13 @@ export default function AlbumCover() {
             
             className={classNames(
               " m-auto landscape:h-full min-w-60 object-cover transition-all duration-[2000ms] ease-out  shadow-zinc-950",
-              { "shadow-xl  ": playing }
+              { "shadow-xl -translate-y-5  ": playing }
             )}
           />
       </div>
 
-      <div className=" portrait:hidden  ">
-        <GameToggler />
+      <div className=" portrait:hidden overflow-y-visible   ">
+        <GameToggler   />
         <div className=" max-w-full    ">
           <h1 className="  text-4xl font-bold bg-gradient-to-r from-slate-400 to-slate-900 bg-clip-text text-transparent">
             {album.Name}
@@ -42,6 +42,7 @@ export default function AlbumCover() {
         </div>
       </div>
     </div>
-  );
+    
+   );
 }
  

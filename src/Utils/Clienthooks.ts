@@ -1,5 +1,5 @@
 "use client";
-import { DependencyList, useEffect  } from "react";
+import { DependencyList, useEffect, useState  } from "react";
 
 interface EventListener  {
   type: string;
@@ -24,4 +24,28 @@ export const useListener = (
     }
     // Add event listener
   }, [Node, callback, type, ...(deps || [])]);
+};
+export const useScrollDelta = () => {
+  const [Delta, setDelta] = useState(0);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (currentScrollTop > 0) {
+      setDelta(lastScrollTop - currentScrollTop);
+      setLastScrollTop(currentScrollTop);
+
+
+    }
+
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollTop]);
+
+  return Delta;
 };

@@ -7,8 +7,12 @@
       "sizes": "500x500",
       "type": "image/jpg"
     } 
-  ],
+  ], 
   "start_url": "/SMOK_LAYBACK_VOL",
   "display": "standalone", 
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "background_color": "#18181b",
+  "theme_color": "#18181b"
+
+
 }

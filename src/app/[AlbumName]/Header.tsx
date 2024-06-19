@@ -1,14 +1,16 @@
 import { Children } from '../../Utils/types'
 import classNames from 'classnames'
-import { useApp } from '../AppProvider'
-  
+import { useScrollDelta } from '../../Utils/Clienthooks';
+
 function Header({ className, children}: Children) {
-const [ gameOpened] = useApp().game
-  return (
-    <header className={ classNames(' top-0 sticky items-end   ease-in-out', { "hidden": gameOpened}  )} >
-        <div className={classNames(' absolute bottom-0 text-center w-full', className)}>  {children}</div>
+  const ScrollDelta = useScrollDelta()
+  const up = ScrollDelta > 0
+  console.log(ScrollDelta)
+   return (
+     <header className={ classNames('  bg-gradient-to-b from-black px-6 py-3 transition duration-200  overflow-hidden backdrop-blur-md z-20   sticky top-0  w-full  text-white  flex flex-col justify-end ' , { "max-h-[1000px]": up, "max-h-0": ! up} )} >
+         <div className={classNames(' w-full', className,   )}>  {children} </div>
       </header>
-  )
+   )
 }
 
 export default Header

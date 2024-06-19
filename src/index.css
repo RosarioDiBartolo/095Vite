@@ -2,48 +2,53 @@
 @tailwind components;
 @tailwind utilities;
  
-html, body{
+* {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-
+  box-sizing: border-box;
 }
-html{
-    background-color: rgb(39, 38, 48);
-    height: 100%;
-    min-height: 100vh;
-    overflow-y: scroll;
-  
-    background-attachment: fixed;
-} 
-
-body{ 
-     height: 100%; 
-     display: flex;
+*::-webkit-scrollbar{
+  display: none;
+}
  
-     flex-direction: column;
-   }
+html{ 
+  overscroll-behavior:none;  
 
+  -webkit-overflow-scrolling: touch; /*   Smooth scrolling for iOS */
+ }
+html, body, #root {
+     margin: 0;
+    padding: 0;  
+   }
+  #root{
+    overflow: visible; 
+  } 
+
+body{
+  
+  background: #27272a  ;
+}
+ 
 .animate-once{
   animation-iteration-count: initial;
 
 }
-div{
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-} 
-body::-webkit-scrollbar{
-  display: none;
-}
+ 
+ 
 
 @media screen and (display-mode: standalone) {
   
   header{
     height: 88px;
   } 
-}
- 
+
+
+  main{ 
+  }
+  
+
+  
+} 
  
 @keyframes animate-tap {
   from {
@@ -72,7 +77,7 @@ button.tap:active{
     --background-end-rgb: 0, 0, 0;
   }
 }
-
+ 
  
 @layer utilities {
   .text-balance {

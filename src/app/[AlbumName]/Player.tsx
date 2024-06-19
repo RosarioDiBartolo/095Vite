@@ -29,7 +29,7 @@ export function MusicTrack() {
       </div>
       <input
         type="range"
-        className="w-full h-1 appearance-none accent-green-700 border-none  rounded-lg   cursor-pointer range-sm dark:bg-zinc-900  "        min="0"
+        className="w-full h-1 appearance-none  bg-gradient-to-r from-green-500 via-zinc-500 to-zinc-800 border-none  rounded-lg   cursor-pointer range-sm dark:bg-zinc-900  "        min="0"
         max={duration || 0}
         step={.0001}
         value={currentTime || 0}
@@ -71,8 +71,8 @@ const Player = () => {
   }, [album?.Songs.length, setCurrentSong])
  
   return (
-    <div className=' flex justify-between overflow-visible'> 
-    <div className=" w-1/2 flex gap-3 items-center justify-between  text-green-500    ">
+    <div className=' flex justify-between items-center z-10  '> 
+    <div className=" w-1/2 flex gap-3 items-end justify-between  text-green-500    ">
           <Toggler />
           
          <RiForwardEndFill onClick={nextSong} className="    transition-transform duration-75 ease-in   active:text-white"
@@ -83,7 +83,7 @@ const Player = () => {
     </div>
     <div>
 
-    <div onClick={shuffle} ref={ animationContainer } className=' relative bottom-5 w-24 rotate-180 ' /> 
+    <div onClick={shuffle} ref={ animationContainer } className=' relative bottom-3 w-24 rotate-180 ' /> 
     </div> 
     </div>
 
