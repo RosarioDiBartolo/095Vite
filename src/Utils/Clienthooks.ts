@@ -1,30 +1,21 @@
 "use client";
-import { DependencyList, useEffect, useState  } from "react";
-
-interface EventListener  {
-  type: string;
-  callback: EventListenerOrEventListenerObject;
-  node?: Element;
-}
- 
-export const useListener = (
-  {type, callback , node  , deps }: EventListener &  {deps?: DependencyList }
-) => {
-    const Node = node || (typeof window !== 'undefined' ? window : undefined);
-
-  useEffect(() => {
- 
-    if (Node) {
-      Node.addEventListener(type, callback);
-
-      // Remove event listener on cleanup
-      return () => {
-        Node.removeEventListener(type, callback);
-      };
+import {  useEffect, useState  } from "react";
+export const useScroll = ()=>{
+  const [Scroll, setScroll] = useState(0)
+  useEffect(
+    ()=>{
+    const onScroll = ()=>{
+      setScroll(window.scrollY)
     }
-    // Add event listener
-  }, [Node, callback, type, ...(deps || [])]);
-};
+
+    window.addEventListener("scroll", onScroll)
+
+    return ()=> window.removeEventListener( "scroll", onScroll)
+    }
+  )
+  return Scroll;
+ }
+
 export const useScrollDelta = () => {
   const [Delta, setDelta] = useState(0);
   const [lastScrollTop, setLastScrollTop] = useState(0);
@@ -33,8 +24,7 @@ export const useScrollDelta = () => {
     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
     if (currentScrollTop > 0) {
       setDelta(lastScrollTop - currentScrollTop);
-      setLastScrollTop(currentScrollTop);
-
+      setLastScrollTop(currentScrollTop); 
 
     }
 

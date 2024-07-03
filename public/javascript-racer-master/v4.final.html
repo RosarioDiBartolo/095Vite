@@ -630,7 +630,6 @@ Space.addEventListener("touchstart", (e) => {
      controllerTOuchIndex = e.touches.length - 1
     const touch = e.touches[controllerTOuchIndex];
     Wrapper.style.display = "block";
-    Accelerator.innerHTML = "Space start";
     console.log("START");
     Wrapper.style.top = `${touch.clientY - radius}px`;
     Wrapper.style.left = `${touch.clientX - radius}px`;
@@ -652,8 +651,7 @@ Space.addEventListener("touchmove", (e) => {
      Controller.style.top = `${touchY}px`;
     Controller.style.left = `${touchX}px`;
     Control = touchX / radius
-    console.log(Control)
- });
+  });
 
 Space.addEventListener("touchend", (e) => {
       Controller.style.top = '0px';

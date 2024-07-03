@@ -104,7 +104,7 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
   run: function(options) {
 
     Game.loadImages(options.images, function(images) {
-
+      console.log("Images loaded")
       options.ready(images); // tell caller to initialize itself because images are loaded and we're ready to rumble
 
       Game.setKeyListener(options.keys);
@@ -136,18 +136,33 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
   },
 
   //---------------------------------------------------------------------------
+  loading: function(progress){
+    console.log({"loading progress": progress})
+    if (window.parent && window.parent.Progress ){
+      window.parent.Progress(progress)
+     }
+   },
 
   loadImages: function(names, callback) { // load multiple images and callback when ALL images have loaded
     var result = [];
     var count  = names.length;
 
     var onload = function() {
-      if (--count == 0)
+      const remainig = --count
+        Game.loading(( names.length - remainig)  /  names.length )
+
+       if (remainig == 0){
         callback(result);
+
+       } 
+ 
     };
+
+    Game.loading(0)
 
     for(var n = 0 ; n < names.length ; n++) {
       var name = names[n];
+      
       result[n] = document.createElement('img');
       Dom.on(result[n], 'load', onload);
       result[n].src = "images/" + name + ".png";

@@ -3,7 +3,7 @@
 import { useGlobalAudioPlayer } from "react-use-audio-player";
 import { useGlobal } from "../AlbumProvider";
 import classNames from "classnames"; 
-import GameToggler from "./GameToggler"; 
+import GameToggler from "../Widgets/GameToggler"; 
   
 
 export default function AlbumCover() {
@@ -14,9 +14,9 @@ export default function AlbumCover() {
  
    return (
         
-    <div className="  landscape:px-14 landscape:py-10   z-0  landscape:h-svh flex-1 flex items-end p-6  gap-6 "
+    <div className=" landscape:px-14 landscape:py-10   z-0  landscape:h-svh flex-1 flex items-end p-6  gap-6 "
      > 
-      <div className=" flex-1 max-h-full aspect-square    ">
+      <div className=" flex-1 max-h-full aspect-square max-w-xl    ">
       <img
           //priority
             src={Logo}
@@ -24,7 +24,7 @@ export default function AlbumCover() {
             alt={`Album cover of ${Name}`}
             
             className={classNames(
-              " m-auto landscape:h-full min-w-60 object-cover transition-all duration-[2000ms] ease-out  shadow-zinc-950",
+              " m-auto landscape:h-full min-w-60   object-cover transition-all duration-[2000ms] ease-out  shadow-zinc-950",
               { "shadow-xl -translate-y-5  ": playing }
             )}
           />

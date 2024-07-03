@@ -2,9 +2,13 @@
 
 import React, { createContext, useContext, useState, ReactNode  } from 'react';
 import { Album } from '../Album'; 
-
+interface ColorProperty {
+  [property: string]: number; // Here you define the keys and their value types
+}
 // Define the context type
 interface AlbumContextType {
+  setThemeColor: React.Dispatch<React.SetStateAction<string>>;
+  getColor: ( props:  ColorProperty  ) => string[];
   currentSongIndex: number;
   setCurrentSong: React.Dispatch<React.SetStateAction<number>>;
   album: Album; 
@@ -12,6 +16,8 @@ interface AlbumContextType {
 
 // Create the context with a default value
 const defaultAlbumContext: AlbumContextType = {
+  setThemeColor: ()=> 0,
+  getColor: ( )=> [],
   currentSongIndex: 0,
   setCurrentSong: () => 0,
   album: {
@@ -33,9 +39,22 @@ interface AlbumProviderProps {
 
 // Create the provider component
 export const AlbumProvider: React.FC<AlbumProviderProps> = ({ children, album }) => {
+
   const [currentSongIndex, setCurrentSong] = useState<number>(0);
- 
+  const [ThemeColor, setThemeColor] = useState("green");
+
+   // Function to generate dynamic class names
+   function getColor( props: ColorProperty) {
+     return   Object.entries(props).map(
+
+      ([property, variant] ) => `${property}-${ThemeColor}-${variant}`
+     )
+  }
+
+
   const value = {
+    setThemeColor,
+    getColor,
     currentSongIndex,
     setCurrentSong, 
     album: {

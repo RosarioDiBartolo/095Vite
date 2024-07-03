@@ -1,5 +1,5 @@
 import React, { createContext, useState, Dispatch, SetStateAction, ReactNode, useContext   } from 'react';
-
+ 
 // Define the type for the context state and setter function
 type AppContextType = { game: [boolean, Dispatch<SetStateAction<boolean>>];   };
 
@@ -11,10 +11,10 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   
 
   return (
-    <AppContext.Provider value={{ game  }}>
-      {children}
-    </AppContext.Provider>
-  );
+       <AppContext.Provider value={{ game  }}>
+        {children}
+      </AppContext.Provider>
+   );
 };
  
 

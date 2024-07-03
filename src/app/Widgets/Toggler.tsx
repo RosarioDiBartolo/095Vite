@@ -12,9 +12,9 @@ function Toggler() {
     const Icon = useToggler()
     const {togglePlayPause,playing } = useGlobalAudioPlayer()
   return (
-    <Icon onClick={  togglePlayPause }   className={ classNames("rounded-full  animate-bounce   ", {" shadow-lg    ": playing, "  ": !playing})} size={64} />
+    <Icon onClick={  togglePlayPause }   className={ classNames("rounded-full bg-gradient animate-bounce   ", {" shadow-lg    ": playing, "  ": !playing})} size={64} />
 
    )
-}
+} 
 
 export default Toggler

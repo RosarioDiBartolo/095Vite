@@ -11,23 +11,20 @@
   display: none;
 }
  
-html{ 
-  overscroll-behavior:none;  
 
-  -webkit-overflow-scrolling: touch; /*   Smooth scrolling for iOS */
- }
-html, body, #root {
-     margin: 0;
-    padding: 0;  
-   }
-  #root{
-    overflow: visible; 
-  } 
-
-body{
-  
-  background: #27272a  ;
+html, body{
+  margin: 0;
 }
+
+html{ 
+     background-color: #18181b   ;
+     overscroll-behavior: contain;
+
+    -webkit-overflow-scrolling: touch; /*   Smooth scrolling for iOS */
+ }
+ 
+  
+ 
  
 .animate-once{
   animation-iteration-count: initial;
@@ -42,41 +39,10 @@ body{
     height: 88px;
   } 
 
-
-  main{ 
-  }
-  
-
+ 
   
 } 
- 
-@keyframes animate-tap {
-  from {
-    max-width:  0px;
-    max-height: 0px;
-   }
-  to {
-    max-width: auto;
-    max-height: auto;
-  }
-}
-button.tap:active{
-  background-color: aqua;
-  animation: animate-tap 1s ease-in-out infinite;
-}
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+   
  
  
 @layer utilities {
@@ -121,15 +87,29 @@ input:focus-visible{
 }
 
 .infiniteScroll {
-  animation: infiniteTranslate 10s linear infinite;
+  animation: infiniteTranslate 8s linear infinite;
   white-space: nowrap; /* Ensure content doesn't wrap */
 }
-
+ 
 @keyframes infiniteTranslate {
   0% {
     transform: translateX(-100%);
   }
-  100% {
-    transform: translateX(100%);
+  70% { 
+    transform: translateX(0);
+  }
+  80%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
   }
 }
+input[type='range']::-webkit-slider-thumb {
+  @apply bg-green-500;
+
+   -webkit-appearance: none;
+  width: 14px;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+ }
